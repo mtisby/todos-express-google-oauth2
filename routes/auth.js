@@ -19,6 +19,10 @@ passport.use(new GoogleStrategy({
   state: true
 },
 function(accessToken, refreshToken, profile, cb) {
+  console.log('profile: ', profile)
+  console.log('***********************')
+  console.log('cb: ', cb)
+
   db.get('SELECT * FROM federated_credentials WHERE provider = ? AND subject = ?', [
     'https://accounts.google.com',
     profile.id
